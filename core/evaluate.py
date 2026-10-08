@@ -26,6 +26,29 @@ from . import llm
 
 # ------------------------------------------------------------ retrieval eval
 
+def _location_matches(unit, case: dict) -> bool:
+    """Lenient source match: same file, and location equal or adjacent.
+
+    Chunk boundaries are arbitrary (±1 paragraph keeps the metric honest while
+    tolerating split/merge differences); slides and timestamps must match exactly.
+    """
+    if unit.source_file != case.get("source_file"):
+        return False
+    want = (case.get("location") or "").strip()
+    if not want:
+        return True
+    got = (unit.location or "").strip()
+    if want == got:
+        return True
+    import re as _re
+
+    mw = _re.fullmatch(r"para (\d+)", want)
+    mg = _re.fullmatch(r"para (\d+)", got)
+    if mw and mg:
+        return abs(int(mw.group(1)) - int(mg.group(1))) <= 1
+    return False
+
+
 def eval_retrieval(retriever: Retriever, testset: list[dict]) -> dict:
     """testset: [{"question": ..., "source_file": ..., "location": ...}]
 
@@ -39,9 +62,7 @@ def eval_retrieval(retriever: Retriever, testset: list[dict]) -> dict:
         results = retriever.search(case["question"], k=6)
         rank = None
         for i, (u, _s) in enumerate(results):
-            if u.source_file == case["source_file"] and (
-                not case.get("location") or u.location == case["location"]
-            ):
+            if _location_matches(u, case):
                 rank = i + 1
                 break
         if rank:
@@ -72,16 +93,23 @@ Return JSON {"verdict": "relevant"|"irrelevant", "reason": "one sentence"}"""
 
 def eval_generation(retriever: Retriever, testset: list[dict]) -> dict:
     from .tutor import answer as tutor_answer
+    from .ingest import KnowledgeBase  # noqa: F401  (type only)
 
     faithful, relevant, refused_ok = 0, 0, 0
     on_material = [c for c in testset if not c.get("off_material")]
     off_material = [c for c in testset if c.get("off_material")]
 
+    # full unit texts so the judge sees the complete source passage
+    unit_by_id = {u.id: u.text for u in retriever.kb.units}
+
     for case in on_material:
         r = tutor_answer(case["question"], retriever, rerank=False)
         if r["refused"]:
             continue
-        excerpts = "\n\n".join(c["excerpt"] for c in r["citations"]) or "(none cited)"
+        excerpts = "\n\n".join(
+            f"[{c['unit_id']}] {unit_by_id.get(c['unit_id'], c['excerpt'])}"
+            for c in r["citations"]
+        ) or "(none cited)"
         try:
             v = llm.chat_json(
                 [

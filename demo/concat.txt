@@ -1,0 +1,3 @@
+file '/home/maebahesioru/ダウンロード/sushi_money_research/実行/210_hackathons/multimodal/study-companion/demo/title.mp4'
+file '/home/maebahesioru/ダウンロード/sushi_money_research/実行/210_hackathons/multimodal/study-companion/demo/demo_subbed.mp4'
+file '/home/maebahesioru/ダウンロード/sushi_money_research/実行/210_hackathons/multimodal/study-companion/demo/end.mp4'

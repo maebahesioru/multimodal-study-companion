@@ -195,7 +195,7 @@ $('#btnAnalyze').onclick = async () => {
   $('#btnAnalyze').disabled = true;
   $('#analyzeStat').innerHTML = '<span class="spin"></span>Reading your material and mapping topics… (may take a minute)';
   try{
-    const r = await api('/api/analyze');
+    const r = await api('/api/analyze', {}, 'POST');
     topics = r.topics; renderTopics();
     $('#analyzeStat').textContent = `✓ ${topics.length} topics mapped`;
   }catch(e){ $('#analyzeStat').textContent = 'Failed: ' + e.message; }

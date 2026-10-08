@@ -1,0 +1,119 @@
+1
+00:00:00,000 --> 00:00:05,000
+Study Companion — a source-grounded, adaptive AI tutor
+
+2
+00:00:05,000 --> 00:00:11,000
+Built for the Multimodal AI Hackathon 2026, Track D:
+Personalized Tutoring & Adaptive Learning
+
+3
+00:00:11,000 --> 00:00:17,000
+The problem: study material is scattered across lecture videos,
+textbooks and slides — and generic chatbots answer from anywhere
+but your course.
+
+4
+00:00:17,000 --> 00:00:23,000
+Study Companion ingests your own material — PDF, slides, notes,
+and timestamped lecture transcripts — with zero manual preprocessing.
+
+5
+00:00:23,000 --> 00:00:30,000
+Every passage keeps its exact origin: page number, slide number,
+or video timestamp. That is the foundation for source grounding.
+
+6
+00:00:30,000 --> 00:00:37,000
+Uploading three formats now: a textbook-style notes file,
+a lecture slide deck, and a lecture transcript.
+
+7
+00:00:37,000 --> 00:00:44,000
+Each file is parsed into source-linked content units:
+13 passages from 3 files, in a couple of seconds.
+
+8
+00:00:44,000 --> 00:00:52,000
+One click builds the course map: topics, subtopics, key concepts
+and prerequisites — with every unit tagged to its topic.
+
+9
+00:00:52,000 --> 00:01:00,000
+The tutor answers strictly from your material.
+Every claim carries a citation to the exact unit.
+
+10
+00:01:00,000 --> 00:01:08,000
+Ask about the learning rate — the answer cites the notes passage
+and the slide where the update rule is defined.
+
+11
+00:01:08,000 --> 00:01:15,000
+Click a citation and the exact source excerpt opens.
+No black boxes — the student can verify everything.
+
+12
+00:01:15,000 --> 00:01:22,000
+Now an off-material question: the capital of France is nowhere
+in the material. The tutor declines instead of hallucinating.
+
+13
+00:01:22,000 --> 00:01:29,000
+The refusal is explicit and flagged in the UI — outside knowledge
+is never blended silently with course content.
+
+14
+00:01:29,000 --> 00:01:36,000
+Adaptive assessment: pick a topic, count and difficulty.
+Questions are generated from the tagged units.
+
+15
+00:01:36,000 --> 00:01:43,000
+Every question is independently verified: a second LLM pass solves
+it from the source excerpt. Mismatches are dropped or repaired.
+
+16
+00:01:43,000 --> 00:01:50,000
+Each question is tagged to a topic, a difficulty and a source unit —
+and repeated questions are blocked across assessments.
+
+17
+00:01:50,000 --> 00:01:57,000
+Answer a question and get cited feedback plus the model answer.
+The learner model updates immediately.
+
+18
+00:01:57,000 --> 00:02:04,000
+Mastery is estimated with Bayesian Knowledge Tracing per topic,
+with question-type aware guess and slip priors.
+
+19
+00:02:04,000 --> 00:02:11,000
+The dashboard shows per-topic mastery and weak topics —
+the signal the tutor and recommendations adapt to.
+
+20
+00:02:11,000 --> 00:02:18,000
+And a 7-day study plan weighted by mastery and forgetting curves —
+so review time goes where it matters.
+
+21
+00:02:18,000 --> 00:02:25,000
+The evaluation suite measures retrieval hit-rate and MRR,
+faithfulness, answer relevancy and refusal accuracy
+
+22
+00:02:25,000 --> 00:02:32,000
+on a labeled test set — plus simulated student profiles
+that report mastery gains and repetition rate.
+
+23
+00:02:32,000 --> 00:02:39,000
+Everything runs locally on any OpenAI-compatible model.
+Code, docs and evaluation results are in the public repo.
+
+24
+00:02:39,000 --> 00:02:46,000
+Study Companion — tutoring that stays grounded in your course.
+github.com/maebahesioru/multimodal-study-companion
