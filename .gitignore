@@ -9,4 +9,4 @@ data/uploads/
 .venv/
 __pycache__/
 *.pyc
-eval_report.json
+# eval_report.json is committed as evidence

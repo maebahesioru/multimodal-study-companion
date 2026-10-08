@@ -1,119 +1,119 @@
 1
-00:00:00,000 --> 00:00:08,495
+00:00:00,000 --> 00:00:08,343
 Study Companion — a source-grounded, adaptive AI tutor
 
 2
-00:00:08,495 --> 00:00:18,689
+00:00:08,343 --> 00:00:18,355
 Built for the Multimodal AI Hackathon 2026, Track D:
 Personalized Tutoring & Adaptive Learning
 
 3
-00:00:18,689 --> 00:00:28,883
+00:00:18,355 --> 00:00:28,367
 The problem: study material is scattered across lecture videos,
 textbooks and slides — and generic chatbots answer from anywhere
 but your course.
 
 4
-00:00:28,883 --> 00:00:39,077
+00:00:28,367 --> 00:00:38,379
 Study Companion ingests your own material — PDF, slides, notes,
 and timestamped lecture transcripts — with zero manual preprocessing.
 
 5
-00:00:39,077 --> 00:00:50,971
+00:00:38,379 --> 00:00:50,060
 Every passage keeps its exact origin: page number, slide number,
 or video timestamp. That is the foundation for source grounding.
 
 6
-00:00:50,971 --> 00:01:02,864
+00:00:50,060 --> 00:01:01,740
 Uploading three formats now: a textbook-style notes file,
 a lecture slide deck, and a lecture transcript.
 
 7
-00:01:02,864 --> 00:01:14,757
+00:01:01,740 --> 00:01:13,421
 Each file is parsed into source-linked content units:
 13 passages from 3 files, in a couple of seconds.
 
 8
-00:01:14,757 --> 00:01:28,349
+00:01:13,421 --> 00:01:26,771
 One click builds the course map: topics, subtopics, key concepts
 and prerequisites — with every unit tagged to its topic.
 
 9
-00:01:28,349 --> 00:01:41,942
+00:01:26,771 --> 00:01:40,120
 The tutor answers strictly from your material.
 Every claim carries a citation to the exact unit.
 
 10
-00:01:41,942 --> 00:01:55,534
+00:01:40,120 --> 00:01:53,469
 Ask about the learning rate — the answer cites the notes passage
 and the slide where the update rule is defined.
 
 11
-00:01:55,534 --> 00:02:07,427
+00:01:53,469 --> 00:02:05,150
 Click a citation and the exact source excerpt opens.
 No black boxes — the student can verify everything.
 
 12
-00:02:07,427 --> 00:02:19,320
+00:02:05,150 --> 00:02:16,831
 Now an off-material question: the capital of France is nowhere
 in the material. The tutor declines instead of hallucinating.
 
 13
-00:02:19,320 --> 00:02:31,214
+00:02:16,831 --> 00:02:28,512
 The refusal is explicit and flagged in the UI — outside knowledge
 is never blended silently with course content.
 
 14
-00:02:31,214 --> 00:02:43,107
+00:02:28,512 --> 00:02:40,192
 Adaptive assessment: pick a topic, count and difficulty.
 Questions are generated from the tagged units.
 
 15
-00:02:43,107 --> 00:02:55,000
+00:02:40,192 --> 00:02:51,873
 Every question is independently verified: a second LLM pass solves
 it from the source excerpt. Mismatches are dropped or repaired.
 
 16
-00:02:55,000 --> 00:03:06,893
+00:02:51,873 --> 00:03:03,554
 Each question is tagged to a topic, a difficulty and a source unit —
 and repeated questions are blocked across assessments.
 
 17
-00:03:06,893 --> 00:03:18,787
+00:03:03,554 --> 00:03:15,234
 Answer a question and get cited feedback plus the model answer.
 The learner model updates immediately.
 
 18
-00:03:18,787 --> 00:03:30,680
+00:03:15,234 --> 00:03:26,915
 Mastery is estimated with Bayesian Knowledge Tracing per topic,
 with question-type aware guess and slip priors.
 
 19
-00:03:30,680 --> 00:03:42,573
+00:03:26,915 --> 00:03:38,596
 The dashboard shows per-topic mastery and weak topics —
 the signal the tutor and recommendations adapt to.
 
 20
-00:03:42,573 --> 00:03:54,466
+00:03:38,596 --> 00:03:50,277
 And a 7-day study plan weighted by mastery and forgetting curves —
 so review time goes where it matters.
 
 21
-00:03:54,466 --> 00:04:06,360
+00:03:50,277 --> 00:04:01,957
 The evaluation suite measures retrieval hit-rate and MRR,
 faithfulness, answer relevancy and refusal accuracy
 
 22
-00:04:06,360 --> 00:04:18,253
+00:04:01,957 --> 00:04:13,638
 on a labeled test set — plus simulated student profiles
 that report mastery gains and repetition rate.
 
 23
-00:04:18,253 --> 00:04:30,146
+00:04:13,638 --> 00:04:25,319
 Everything runs locally on any OpenAI-compatible model.
 Code, docs and evaluation results are in the public repo.
 
 24
-00:04:30,146 --> 00:04:42,040
+00:04:25,319 --> 00:04:37,000
 Study Companion — tutoring that stays grounded in your course.
 github.com/maebahesioru/multimodal-study-companion
